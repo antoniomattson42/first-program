@@ -1,13 +1,17 @@
-import { Image, Text, View, StyleSheet, Platform, Button, Alert } from "react-native";
+import { Image, Text, View, StyleSheet, Button, Alert } from "react-native";
+import React, { useState } from 'react';
 import { ThemedText } from '@/components/ThemedText';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { Styles } from "@/constants/Styles";
-import { Stack } from "expo-router";
-import { Dropdown } from "react-native-element-dropdown";
-// api key AIzaSyAlqMcpTEHzNA0ype-TRwH3pmI9_cieJ34
-// weather api key: af491cbdf29213904faf5e4ec7c900c3
-var types = "today"
-export default function index() {
+import TextFields from "@/components/TextField"; // Import TextFields
+
+export default function Index() {
+  const [city, setCity] = useState<string>('');
+  const [time, setTime] = useState('');
+
+  //Handlers for the butto
+
+
+
   return (
     <View
       style={{
@@ -17,7 +21,7 @@ export default function index() {
       }}>
       <View style={{
         //Header
-        flex: .08,
+        flex: .1,
         flexDirection: "row",
         backgroundColor: "#85929e",
       }}>
@@ -29,8 +33,7 @@ export default function index() {
           flex: .15,
           alignItems: "center",
           justifyContent: "center"
-        }
-        }>
+        }}>
           <Image
             source={require('@/assets/images/weatherIcon.png')}
             style={Styles.tinyLogo}
@@ -45,6 +48,7 @@ export default function index() {
           <ThemedText type="title">Weather App</ThemedText>
         </View>
       </View>
+
       <View
         //Text Boxes
         style={{
@@ -53,68 +57,103 @@ export default function index() {
           flex: 1,
         }}
       >
-          <View style ={{
-            //Box for the text
-            flex: .15,
-            backgroundColor: "",
-            justifyContent:"flex-end",
-            alignContent:"center",
-            marginLeft: 20,
-            marginRight:10,
-          
-          }}>
-            <ThemedText type="subtitle">What type of weather data would you like to search?</ThemedText>
-        </View>
-        <View style ={{
+        <View style={{
+          //Box for the text
           flex: .15,
-          justifyContent:"flex-end",
-          alignContent:"center",
+          justifyContent: "flex-end",
+          alignItems: "center",
           marginLeft: 20,
-          marginRight:10,
+          marginRight: 10,
+        }}>
+          <ThemedText type="defaultSemiBold">What type of weather data would you like to search?</ThemedText>
+        </View>
+        <View style={{
+          //Buttons
+          flex: .15,
+          justifyContent: "flex-end",
+          alignContent: "center",
+          marginLeft: 20,
+          marginRight: 10,
           flexDirection: "row"
         }}>
           <View style={{
             flex: .33,
-            justifyContent:"center",
-            alignContent:"center",
-            margin:10
+            justifyContent: "center",
+            alignContent: "center",
+            margin: 10
           }}>
             <Button
-            title="today"
-            onPress={() => {
-              types = "today!",
-              Alert.alert(types)
-            }}
+              title="Today"
+              onPress={() => {
+                setTime("today");
+                Alert.alert("Selected today");
+              }}
             />
           </View>
           <View style={{
             flex: .33,
-            justifyContent:"center",
-            alignContent:"center",
-            margin:10
+            justifyContent: "center",
+            alignContent: "center",
+            margin: 10
           }}>
             <Button
-            title="Next 7 days"
-            onPress={() => {
-              types = "next",
-              Alert.alert(types)
-            }}
+              title="Next 7 Days"
+              onPress={() => {
+                setTime("future");
+                Alert.alert("Selected next 7 days");
+              }}
             />
           </View>
           <View style={{
             flex: .33,
-            justifyContent:"center",
-            alignContent:"center",
-            margin:10
+            justifyContent: "center",
+            alignContent: "center",
+            margin: 10
           }}>
             <Button
-            title="Past 7 Days"
-            onPress={() => {
-              types = "past",
-              Alert.alert(types)
-            }}
+              title="Past 7 Days"
+              onPress={() => {
+                setTime("past");
+                Alert.alert("Selected past 7 days");
+              }}
             />
           </View>
+        </View>
+
+        <View style={{
+          //Box for the text
+          flex: .15,
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
+          <ThemedText type="defaultSemiBold">What city would you like to check?</ThemedText>
+        </View>
+
+        <View style={{
+          //Box for the text
+          flex: .15,
+          justifyContent: "flex-start",
+          marginTop: 30,
+          alignItems: "center",
+        }}>
+          {/* Pass state and handler to TextFields */}
+          <TextFields value={city} onChangeText={setCity} />
+        </View>
+        <View style={{
+          //submit button
+          flex: .2,
+          justifyContent: "center",
+          alignContent: "center",
+          marginLeft: 20,
+          marginRight: 10,
+        }}>
+          <Button
+              title="Continue"
+              onPress={() => {
+                setTime("future");
+                Alert.alert("Selected next 7 days");
+              }}
+            />
         </View>
       </View>
     </View>
