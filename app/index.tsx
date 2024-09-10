@@ -5,11 +5,6 @@ import { Styles } from "@/constants/Styles";
 import TextFields from "@/components/TextField";
 import WeatherScreen from "./WeatherScreen";
 
-
-import { expo as appJson } from '../app.json';
-
-// @ts-ignore
-const packageName: string = appJson.android.package ?? 'host.exp.exponent';
 const Index = ({ navigation }) => {
   const [city, setCity] = useState<string>('');
   const [time, setTime] = useState<string>('Today');
@@ -71,7 +66,7 @@ const Index = ({ navigation }) => {
           marginLeft: 20,
           marginRight: 10,
         }}>
-          <ThemedText type="defaultSemiBold">{packageName}</ThemedText>
+          <ThemedText type="defaultSemiBold">What type of weather data would you like to search?</ThemedText>
         </View>
         <View style={{
           //Buttons
@@ -86,8 +81,7 @@ const Index = ({ navigation }) => {
             flex: .33,
             justifyContent: "center",
             alignContent: "center",
-            margin: 10,
-            marginHorizontal:50,
+            margin: 10
           }}>
             <Button
               title="Today"
