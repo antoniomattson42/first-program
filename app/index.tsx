@@ -2,15 +2,16 @@ import { Image, Text, View, StyleSheet, Button, Alert } from "react-native";
 import React, { useState } from 'react';
 import { ThemedText } from '@/components/ThemedText';
 import { Styles } from "@/constants/Styles";
-import TextFields from "@/components/TextField"; // Import TextFields
+import TextFields from "@/components/TextField";
+import WeatherScreen from "./WeatherScreen";
 
-export default function Index() {
+const Index = ({ navigation }) => {
   const [city, setCity] = useState<string>('');
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState<string>('Today');
 
-  //Handlers for the butto
-
-
+  const handleNavigate = () => {
+    navigation.navigate('WeatherScreen', { city, time});
+  };
 
   return (
     <View
@@ -53,7 +54,7 @@ export default function Index() {
         //Text Boxes
         style={{
           flexDirection: "column",
-          backgroundColor: "#95a5a6",
+          backgroundColor: "#abb2b9",
           flex: 1,
         }}
       >
@@ -72,7 +73,7 @@ export default function Index() {
           flex: .15,
           justifyContent: "flex-end",
           alignContent: "center",
-          marginLeft: 20,
+          marginLeft: 10,
           marginRight: 10,
           flexDirection: "row"
         }}>
@@ -85,8 +86,7 @@ export default function Index() {
             <Button
               title="Today"
               onPress={() => {
-                setTime("today");
-                Alert.alert("Selected today");
+                setTime("Today");
               }}
             />
           </View>
@@ -97,10 +97,9 @@ export default function Index() {
             margin: 10
           }}>
             <Button
-              title="Next 7 Days"
+              title="Tomorrow"
               onPress={() => {
-                setTime("future");
-                Alert.alert("Selected next 7 days");
+                setTime("Tomorrow");
               }}
             />
           </View>
@@ -111,10 +110,9 @@ export default function Index() {
             margin: 10
           }}>
             <Button
-              title="Past 7 Days"
+              title="Yesterday"
               onPress={() => {
-                setTime("past");
-                Alert.alert("Selected past 7 days");
+                setTime("Yesterday");
               }}
             />
           </View>
@@ -144,18 +142,15 @@ export default function Index() {
           flex: .2,
           justifyContent: "center",
           alignContent: "center",
-          marginLeft: 20,
-          marginRight: 10,
+          margin: 40,
         }}>
           <Button
               title="Continue"
-              onPress={() => {
-                setTime("future");
-                Alert.alert("Selected next 7 days");
-              }}
+              onPress={handleNavigate}
             />
         </View>
       </View>
     </View>
   );
-}
+};
+export default Index;

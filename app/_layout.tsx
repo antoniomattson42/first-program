@@ -1,24 +1,18 @@
-import { Stack } from "expo-router";
 import React from 'react';
 import { Tabs } from 'expo-router';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from "@react-navigation/stack";
+import Index from './Index';
+import WeatherScreen from './WeatherScreen';
 
 
-
+const Stack = createStackNavigator();
 
 
 export default function RootLayout() {
   return (
-    <Stack
-    screenOptions={{
-      headerShown: false
-    }}>
-      <Stack.Screen 
-        
-        name="index" 
-        options={{ title: 'Weather App'}}
-      />
-    </Stack>
+      <Stack.Navigator initialRouteName='Index'>
+        <Stack.Screen name="Index" component={Index} options={{headerShown: false}} />
+        <Stack.Screen name="WeatherScreen" component={WeatherScreen} />
+      </Stack.Navigator>
   );
 }
