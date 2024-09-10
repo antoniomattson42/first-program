@@ -85,7 +85,7 @@ const WeatherScreen = ({ route }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor:'#abb2b9',
+    backgroundColor:'#85929e',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
