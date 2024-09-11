@@ -66,7 +66,7 @@ const Index = ({ navigation }) => {
           marginLeft: 20,
           marginRight: 10,
         }}>
-          <ThemedText type="defaultSemiBold">What type of weather data would you like to search?</ThemedText>
+          <ThemedText type="subtitle">What type of weather data would you like to search?</ThemedText>
         </View>
         <View style={{
           //Buttons
@@ -124,7 +124,7 @@ const Index = ({ navigation }) => {
           justifyContent: "center",
           alignItems: "center",
         }}>
-          <ThemedText type="defaultSemiBold">What city would you like to check?</ThemedText>
+          <ThemedText type="subtitle">What city would you like to check?</ThemedText>
         </View>
 
         <View style={{
