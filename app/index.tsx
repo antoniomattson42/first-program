@@ -78,7 +78,7 @@ const Index = ({ navigation }) => {
           flexDirection: "row"
         }}>
           <View style={{
-            flex: .33,
+            flex: 1,
             justifyContent: "center",
             alignContent: "center",
             margin: 10
@@ -90,7 +90,7 @@ const Index = ({ navigation }) => {
               }}
             />
           </View>
-          <View style={{
+          {/* <View style={{
             flex: .33,
             justifyContent: "center",
             alignContent: "center",
@@ -102,8 +102,8 @@ const Index = ({ navigation }) => {
                 setTime("Tomorrow");
               }}
             />
-          </View>
-          <View style={{
+          </View> */}
+          {/* <View style={{
             flex: .33,
             justifyContent: "center",
             alignContent: "center",
@@ -115,7 +115,7 @@ const Index = ({ navigation }) => {
                 setTime("Yesterday");
               }}
             />
-          </View>
+          </View> */}
         </View>
 
         <View style={{
